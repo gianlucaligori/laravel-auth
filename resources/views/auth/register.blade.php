@@ -1,6 +1,6 @@
 @extends('guests.layouts.base')
 
-@section('contents')
+@section('content')
     <form method="post" action="{{ route('register') }}">
         @csrf
 
