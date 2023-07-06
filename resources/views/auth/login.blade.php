@@ -1,24 +1,26 @@
 @extends('guests.layouts.base')
-
-
 @section('content')
     <div class="container">
-        <form>
+        <form method="post" action="{{ route('login') }}">
+            @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text" value="{{ old('email') }}">We'll never share your email with anyone
-                    else.</div>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required
+                    autofocus autocomplete="username" value="{{ old('email') }}">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required
+                    autocomplete="current-password">
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('password.request') }}">
+                Forgot your password?
+            </a>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 @endsection
